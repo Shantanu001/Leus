@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ReactDOM from "react-dom";
 
@@ -6,13 +6,16 @@ import ContentComponent from "../container/Content";
 import HeaderComponent from "../container/Header";
 import FooterComponent from "../container/Footer";
 
+
 import axios from "axios";
 import { Layout } from "antd";
 const { Header, Footer, Content, Sider } = Layout;
 
-class appRouter extends Component {
+
+class appRouter extends Component { 
   constructor(props) {
     super(props);
+    //console.log("context",this.context);
     this.state = {
       cards: [],
       txt_search: "",
@@ -20,6 +23,7 @@ class appRouter extends Component {
       total_cards: ""
     };
   }
+
 
   Callback = val => {
     console.log(val);
@@ -29,6 +33,7 @@ class appRouter extends Component {
     temp["current_page"] = 1;
     this.setState(temp);
     this.updateCards();
+    // console.log("here12345",useContext(textSearch));
   };
 
   Callback_Pagination = (page, pageSize) => {
@@ -60,12 +65,13 @@ class appRouter extends Component {
         temp["cards"] = res.data.hits;
         temp["total_cards"] = res.data.total;
         this.setState(temp);
-        console.log(res);
+        console.log("here",res);
       });
   }
 
   render() {
     return (
+      
       <Layout>
         <Header style={{ background: "#E8E8E8" }}>
           {" "}
@@ -97,6 +103,8 @@ class appRouter extends Component {
           />
         </Footer>
       </Layout>
+                
+      
     );
   }
 }

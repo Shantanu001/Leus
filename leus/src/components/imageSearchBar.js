@@ -8,21 +8,29 @@ class imageSearchBar extends Component {
     constructor(props){
         super(props);
     }
-
+   
     handleSub(toSearch){
       //console.log(toSearch);
+      
       this.props.callFun1(toSearch);
     }
+    componentDidMount(){
+    }
+
+    //static myTheme = ContextExample;
 
     render(){
         return (
             <div>
-                 <Search
+                 
+                  <Search
       size="large" 
       placeholder="Search Images"
       onSearch={value => this.handleSub(value)}
       style={{ width: 400 }}
     />
+                  
+                 
              </div>
         );
     }
